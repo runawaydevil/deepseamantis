@@ -11,7 +11,7 @@ module.exports = {
       time: true,
       env: {
         HOST: '0.0.0.0',
-        PORT: '0',
+        PORT: '32253',
       },
     },
   ],
