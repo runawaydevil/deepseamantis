@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+@theme {
+  --font-display: "Syne", system-ui, sans-serif;
+  --font-editorial: "Cormorant Garamond", Georgia, serif;
+  --color-void: #030304;
+  --color-abyss: #060a09;
+  --color-bloom: #39ff9c;
+  --color-bloom-dim: rgba(57, 255, 156, 0.12);
+  --color-mist: #e8f4ef;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+  body {
+    @apply bg-void text-mist antialiased;
+    font-family: var(--font-display);
+    overflow-x: hidden;
+  }
+}
+
+@utility text-glow-soft {
+  text-shadow:
+    0 0 40px var(--color-bloom-dim),
+    0 0 80px rgba(57, 255, 156, 0.08);
+}
+
+@keyframes hero-fade-up {
+  from {
+    opacity: 0;
+    transform: translate3d(0, 14px, 0);
+  }
+  to {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes hero-pulse-glow {
+  0%,
+  100% {
+    opacity: 0.45;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.hero-animate-in {
+  animation: hero-fade-up 1.4s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  opacity: 0;
+}
+
+.hero-animate-delay-1 {
+  animation-delay: 0.12s;
+}
+.hero-animate-delay-2 {
+  animation-delay: 0.28s;
+}
+.hero-animate-delay-3 {
+  animation-delay: 0.44s;
+}
+
+.hero-glow-breathe {
+  animation: hero-pulse-glow 7s ease-in-out infinite;
+}
+
+.text-balance-soft {
+  text-wrap: balance;
+}
+
+.text-pretty-soft {
+  text-wrap: pretty;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-animate-in,
+  .hero-glow-breathe {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
